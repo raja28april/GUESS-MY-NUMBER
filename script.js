@@ -18,10 +18,20 @@ document.querySelector('.check').addEventListener('click',function(){
     console.log(guess);
     console.log(typeof guess);
     
+    //when no number
     if(!guess){
+        if(guess===0){
+            document.querySelector('.message').textContent = '🚫 0 not considered';
+        }
         document.querySelector('.message').textContent = '⛔️ no number';
+    
+    //when wins    
     }else if(guess===secretNumber){
         document.querySelector('.message').textContent = '🎉 Correct number';
+        document.querySelector('body').style.backgroundColor='#60b347';
+        document.querySelector('.number').style.width='30rem';
+    
+    //when guess is high
     }else if(guess>secretNumber){
         if(score>1){
             document.querySelector('.message').textContent = '📈 high';
@@ -31,6 +41,8 @@ document.querySelector('.check').addEventListener('click',function(){
             document.querySelector('.message').textContent = '💥 You lost the game';
             document.querySelector('.score').textContent =0;
         }
+    
+    //when guess is low
     }else if(guess<secretNumber){
         if(score>1){
             document.querySelector('.message').textContent = '📉 low';
